@@ -158,6 +158,7 @@ function App() {
       })
       .catch((error) => {
         alert("City Not Found!");
+        getLocation();
       });
 
     Axios.get(
