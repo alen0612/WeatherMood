@@ -12,48 +12,48 @@ function Forecast(props) {
 
   ID = props.forecast.id[0];
   if (ID >= 200 && ID < 300) {
-    tomorrowBackground = { backgroundImage: "url(/thunderstorm.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/thunderstormLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/public/thunderstorm.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/public/thunderstormLogo.png)" };
   } else if (ID >= 300 && ID < 600) {
-    tomorrowBackground = { backgroundImage: "url(/rain.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/rainLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/public/rain.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/public/rainLogo.png)" };
   } else if (ID >= 600 && ID < 700) {
-    tomorrowBackground = { backgroundImage: "url(/snow.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/snowLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/public/snow.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/public/snowLogo.png)" };
   } else if (ID >= 700 && ID < 800) {
-    tomorrowBackground = { backgroundImage: "url(/mist.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/mistLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/public/mist.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/public/mistLogo.png)" };
   } else if (ID === 800) {
-    tomorrowBackground = { backgroundImage: "url(/clear.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/clearLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/public/clear.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/public/clearLogo.png)" };
   } else {
-    tomorrowBackground = { backgroundImage: "url(/cloud.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/cloudLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/public/cloud.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/public/cloudLogo.png)" };
   }
 
   ID = props.forecast.id[1];
-  if (ID >= 200 && ID < 300) icon1 = "/thunderstormIcon.png";
-  else if (ID >= 300 && ID < 600) icon1 = "/rainIcon.png";
-  else if (ID >= 600 && ID < 700) icon1 = "/snowIcon.png";
-  else if (ID >= 700 && ID < 800) icon1 = "/mistIcon.png";
-  else if (ID === 800) icon1 = "/clearIcon.png";
-  else icon1 = "/cloudIcon.png";
+  if (ID >= 200 && ID < 300) icon1 = "/public/thunderstormIcon.png";
+  else if (ID >= 300 && ID < 600) icon1 = "/public/rainIcon.png";
+  else if (ID >= 600 && ID < 700) icon1 = "/public/snowIcon.png";
+  else if (ID >= 700 && ID < 800) icon1 = "/public/mistIcon.png";
+  else if (ID === 800) icon1 = "/public/clearIcon.png";
+  else icon1 = "/public/cloudIcon.png";
 
   ID = props.forecast.id[2];
-  if (ID >= 200 && ID < 300) icon2 = "/thunderstormIcon.png";
-  else if (ID >= 300 && ID < 600) icon2 = "/rainIcon.png";
-  else if (ID >= 600 && ID < 700) icon2 = "/snowIcon.png";
-  else if (ID >= 700 && ID < 800) icon2 = "/mistIcon.png";
-  else if (ID === 800) icon2 = "/clearIcon.png";
-  else icon2 = "/cloudIcon.png";
+  if (ID >= 200 && ID < 300) icon2 = "/public/thunderstormIcon.png";
+  else if (ID >= 300 && ID < 600) icon2 = "/public/rainIcon.png";
+  else if (ID >= 600 && ID < 700) icon2 = "/public/snowIcon.png";
+  else if (ID >= 700 && ID < 800) icon2 = "/public/mistIcon.png";
+  else if (ID === 800) icon2 = "/public/clearIcon.png";
+  else icon2 = "/public/cloudIcon.png";
 
   ID = props.forecast.id[3];
-  if (ID >= 200 && ID < 300) icon3 = "/thunderstormIcon.png";
-  else if (ID >= 300 && ID < 600) icon3 = "/rainIcon.png";
-  else if (ID >= 600 && ID < 700) icon3 = "/snowIcon.png";
-  else if (ID >= 700 && ID < 800) icon3 = "/mistIcon.png";
-  else if (ID === 800) icon3 = "/clearIcon.png";
-  else icon3 = "/cloudIcon.png";
+  if (ID >= 200 && ID < 300) icon3 = "/public/thunderstormIcon.png";
+  else if (ID >= 300 && ID < 600) icon3 = "/public/rainIcon.png";
+  else if (ID >= 600 && ID < 700) icon3 = "/public/snowIcon.png";
+  else if (ID >= 700 && ID < 800) icon3 = "/public/mistIcon.png";
+  else if (ID === 800) icon3 = "/public/clearIcon.png";
+  else icon3 = "/public/cloudIcon.png";
 
   return (
     <div className="Forecast">
