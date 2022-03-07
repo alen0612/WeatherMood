@@ -28,10 +28,10 @@ function App() {
     location: "Taipei",
   });
   const [logo, setLogo] = useState({
-    backgroundImage: "url(/public/clearLogo.png)",
+    backgroundImage: "url(/WeatherMood/clearLogo.png)",
   });
   const [background, setBackground] = useState({
-    backgroundImage: "url(/public/clear.jpg)",
+    backgroundImage: "url(/WeatherMood/clear.jpg)",
   });
 
   useEffect(() => {
@@ -197,43 +197,43 @@ function App() {
         ...prevState,
         weather: "Thunderstorm",
       }));
-      setBackground({ backgroundImage: "url(/public/thunderstorm.jpg)" });
-      setLogo({ backgroundImage: "url(/public/thunderstormLogo.png)" });
+      setBackground({ backgroundImage: "url(/WeatherMood/thunderstorm.jpg)" });
+      setLogo({ backgroundImage: "url(/WeatherMood/thunderstormLogo.png)" });
     } else if (weatherID >= 300 && weatherID < 600) {
       setTodayWeather((prevState) => ({
         ...prevState,
         weather: "Rain",
       }));
-      setBackground({ backgroundImage: "url(/public/rain.jpg)" });
-      setLogo({ backgroundImage: "url(/public/rainLogo.png)" });
+      setBackground({ backgroundImage: "url(/WeatherMood/rain.jpg)" });
+      setLogo({ backgroundImage: "url(/WeatherMood/rainLogo.png)" });
     } else if (weatherID >= 600 && weatherID < 700) {
       setTodayWeather((prevState) => ({
         ...prevState,
         weather: "Snow",
       }));
-      setBackground({ backgroundImage: "url(/public/snow.jpg)" });
-      setLogo({ backgroundImage: "url(/public/snowLogo.png)" });
+      setBackground({ backgroundImage: "url(/WeatherMood/snow.jpg)" });
+      setLogo({ backgroundImage: "url(/WeatherMood/snowLogo.png)" });
     } else if (weatherID >= 700 && weatherID < 800) {
       setTodayWeather((prevState) => ({
         ...prevState,
         weather: "Mist",
       }));
-      setBackground({ backgroundImage: "url(/public/mist.jpg)" });
-      setLogo({ backgroundImage: "url(/public/mistLogo.png)" });
+      setBackground({ backgroundImage: "url(/WeatherMood/mist.jpg)" });
+      setLogo({ backgroundImage: "url(/WeatherMood/mistLogo.png)" });
     } else if (weatherID === 800) {
       setTodayWeather((prevState) => ({
         ...prevState,
         weather: "Clear",
       }));
-      setBackground({ backgroundImage: "url(/public/clear.jpg)" });
-      setLogo({ backgroundImage: "url(/public/clearLogo.png)" });
+      setBackground({ backgroundImage: "url(/WeatherMood/clear.jpg)" });
+      setLogo({ backgroundImage: "url(/WeatherMood/clearLogo.png)" });
     } else {
       setTodayWeather((prevState) => ({
         ...prevState,
         weather: "Clouds",
       }));
-      setBackground({ backgroundImage: "url(/public/cloud.jpg)" });
-      setLogo({ backgroundImage: "url(/public/cloudLogo.png)" });
+      setBackground({ backgroundImage: "url(/WeatherMood/cloud.jpg)" });
+      setLogo({ backgroundImage: "url(/WeatherMood/cloudLogo.png)" });
     }
   };
 

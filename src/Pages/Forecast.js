@@ -12,48 +12,52 @@ function Forecast(props) {
 
   ID = props.forecast.id[0];
   if (ID >= 200 && ID < 300) {
-    tomorrowBackground = { backgroundImage: "url(/public/thunderstorm.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/public/thunderstormLogo.png)" };
+    tomorrowBackground = {
+      backgroundImage: "url(/WeatherMood/thunderstorm.jpg)",
+    };
+    tomorrowLogo = {
+      backgroundImage: "url(/WeatherMood/thunderstormLogo.png)",
+    };
   } else if (ID >= 300 && ID < 600) {
-    tomorrowBackground = { backgroundImage: "url(/public/rain.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/public/rainLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/WeatherMood/rain.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/WeatherMood/rainLogo.png)" };
   } else if (ID >= 600 && ID < 700) {
-    tomorrowBackground = { backgroundImage: "url(/public/snow.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/public/snowLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/WeatherMood/snow.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/WeatherMood/snowLogo.png)" };
   } else if (ID >= 700 && ID < 800) {
-    tomorrowBackground = { backgroundImage: "url(/public/mist.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/public/mistLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/WeatherMood/mist.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/WeatherMood/mistLogo.png)" };
   } else if (ID === 800) {
-    tomorrowBackground = { backgroundImage: "url(/public/clear.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/public/clearLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/WeatherMood/clear.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/WeatherMood/clearLogo.png)" };
   } else {
-    tomorrowBackground = { backgroundImage: "url(/public/cloud.jpg)" };
-    tomorrowLogo = { backgroundImage: "url(/public/cloudLogo.png)" };
+    tomorrowBackground = { backgroundImage: "url(/WeatherMood/cloud.jpg)" };
+    tomorrowLogo = { backgroundImage: "url(/WeatherMood/cloudLogo.png)" };
   }
 
   ID = props.forecast.id[1];
-  if (ID >= 200 && ID < 300) icon1 = "/public/thunderstormIcon.png";
-  else if (ID >= 300 && ID < 600) icon1 = "/public/rainIcon.png";
-  else if (ID >= 600 && ID < 700) icon1 = "/public/snowIcon.png";
-  else if (ID >= 700 && ID < 800) icon1 = "/public/mistIcon.png";
-  else if (ID === 800) icon1 = "/public/clearIcon.png";
-  else icon1 = "/public/cloudIcon.png";
+  if (ID >= 200 && ID < 300) icon1 = "/WeatherMood/thunderstormIcon.png";
+  else if (ID >= 300 && ID < 600) icon1 = "/WeatherMood/rainIcon.png";
+  else if (ID >= 600 && ID < 700) icon1 = "/WeatherMood/snowIcon.png";
+  else if (ID >= 700 && ID < 800) icon1 = "/WeatherMood/mistIcon.png";
+  else if (ID === 800) icon1 = "/WeatherMood/clearIcon.png";
+  else icon1 = "/WeatherMood/cloudIcon.png";
 
   ID = props.forecast.id[2];
-  if (ID >= 200 && ID < 300) icon2 = "/public/thunderstormIcon.png";
-  else if (ID >= 300 && ID < 600) icon2 = "/public/rainIcon.png";
-  else if (ID >= 600 && ID < 700) icon2 = "/public/snowIcon.png";
-  else if (ID >= 700 && ID < 800) icon2 = "/public/mistIcon.png";
-  else if (ID === 800) icon2 = "/public/clearIcon.png";
-  else icon2 = "/public/cloudIcon.png";
+  if (ID >= 200 && ID < 300) icon2 = "/WeatherMood/thunderstormIcon.png";
+  else if (ID >= 300 && ID < 600) icon2 = "/WeatherMood/rainIcon.png";
+  else if (ID >= 600 && ID < 700) icon2 = "/WeatherMood/snowIcon.png";
+  else if (ID >= 700 && ID < 800) icon2 = "/WeatherMood/mistIcon.png";
+  else if (ID === 800) icon2 = "/WeatherMood/clearIcon.png";
+  else icon2 = "/WeatherMood/cloudIcon.png";
 
   ID = props.forecast.id[3];
-  if (ID >= 200 && ID < 300) icon3 = "/public/thunderstormIcon.png";
-  else if (ID >= 300 && ID < 600) icon3 = "/public/rainIcon.png";
-  else if (ID >= 600 && ID < 700) icon3 = "/public/snowIcon.png";
-  else if (ID >= 700 && ID < 800) icon3 = "/public/mistIcon.png";
-  else if (ID === 800) icon3 = "/public/clearIcon.png";
-  else icon3 = "/public/cloudIcon.png";
+  if (ID >= 200 && ID < 300) icon3 = "/WeatherMood/thunderstormIcon.png";
+  else if (ID >= 300 && ID < 600) icon3 = "/WeatherMood/rainIcon.png";
+  else if (ID >= 600 && ID < 700) icon3 = "/WeatherMood/snowIcon.png";
+  else if (ID >= 700 && ID < 800) icon3 = "/WeatherMood/mistIcon.png";
+  else if (ID === 800) icon3 = "/WeatherMood/clearIcon.png";
+  else icon3 = "/WeatherMood/cloudIcon.png";
 
   return (
     <div className="Forecast">
