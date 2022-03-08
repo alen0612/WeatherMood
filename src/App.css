@@ -364,3 +364,157 @@
   align-items: center;
   font-size: 2em;
 }
+
+/*```````RWD```````*/
+
+@media only screen and (max-width: 820px) {
+  .Background {
+    height: 96vh;
+  }
+
+  .SearchBarCloseButton {
+    margin-top: 10%;
+  }
+
+  .SearchBarSpan {
+    width: 65%;
+  }
+  .TodayInfo {
+    height: 50%;
+    width: 50%;
+  }
+
+  .description {
+    top: 27%;
+    margin-left: 20%;
+  }
+
+  .temperature {
+    bottom: 25%;
+    margin-right: 15%;
+  }
+
+  .PostBarInput {
+    width: 75%;
+  }
+
+  .PostBarOutput {
+    width: 75%;
+  }
+
+  .futureDays {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+  .SearchBarClose {
+    width: 75%;
+  }
+
+  .SearchBarCloseButton {
+    font-size: 1em;
+    margin-top: 5%;
+  }
+
+  .SearchBarSpanLocation {
+    font-size: 1em;
+  }
+
+  .SearchBarSpanSelect {
+    font-size: 1em;
+  }
+
+  .SearchBarSpanButton {
+    font-size: 1em;
+  }
+
+  .PostBarInput {
+    margin-top: -10%;
+    height: 25%;
+  }
+
+  .temperature {
+    font-size: 4em;
+  }
+
+  .PostBarMood {
+    width: 20%;
+    height: 15%;
+    font-size: 0.75em !important;
+    min-width: 0px !important;
+    min-height: 0 !important;
+    margin-top: -5%;
+  }
+
+  .PostBarBood:active {
+    height: 15% !important;
+  }
+
+  .css-1s2u09g-control {
+    min-height: 0 !important;
+  }
+
+  .css-tlfecz-indicatorContainer {
+    width: 0.5em !important;
+    height: 0.5em !important;
+    font-size: 0.5em !important;
+  }
+
+  .css-tlfecz-indicatorContainer {
+    max-width: 17px;
+    max-height: 17px;
+  }
+
+  .css-1gtu0rj-indicatorContainer {
+    max-width: 16px;
+    max-height: 16px;
+  }
+
+  .css-tj5bde-Svg {
+    width: 50%;
+    height: 50%;
+  }
+
+  .PostBarContent {
+    width: 45%;
+    min-width: 0px !important;
+    font-size: 0.5em;
+  }
+
+  .PostBarButton {
+    font-size: 0.5em;
+  }
+
+  .WeatherMoodIcon {
+    padding-left: 2.5%;
+    font-size: 1.5em;
+  }
+
+  .WeatherMoodContent {
+    padding-left: 5%;
+  }
+
+  .WeatherMoodText {
+    font-size: 0.75em;
+  }
+
+  .WeatherMoodDate {
+    font-size: 0.25em;
+  }
+
+  .tomorrowWeather {
+    font-size: 1em;
+    top: 20%;
+  }
+
+  .tomorrowTemp {
+    font-size: 3em;
+    bottom: 10%;
+  }
+
+  .futureDays {
+    font-size: 0.8em;
+    width: 80%;
+  }
+}
