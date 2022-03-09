@@ -21,7 +21,7 @@
 
 .Background {
   height: auto;
-  min-height: 92vh;
+  min-height: 95vh;
   width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
@@ -271,7 +271,9 @@
 }
 
 .WeatherMoodIcon {
+  text-align: center;
   font-size: 2.25em;
+  width: 10%;
 }
 
 .WeatherMoodContent {
@@ -291,6 +293,26 @@
   height: 80%;
   text-align: start;
   font-size: 1.25em;
+}
+
+.WeatherMoodDelete {
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 6%;
+}
+
+.WeatherMoodDelete:hover {
+  box-shadow: 0px 0px 10px rgb(192, 192, 185);
+  transform: translateY(-2px);
+  transition: 0.5s;
+}
+
+.WeatherMoodDelete:active {
+  box-shadow: 0px 0px 2px rgb(192, 192, 185),
+    inset 0px 0px 2px rgb(189, 189, 162);
+  transform: translateY(-1px);
+  transition: 0s;
 }
 
 .Forecast {
@@ -402,6 +424,10 @@
     width: 75%;
   }
 
+  .WeatherMoodDelete {
+    margin-bottom: 7%;
+  }
+
   .futureDays {
     width: 75%;
   }
@@ -487,8 +513,9 @@
   }
 
   .WeatherMoodIcon {
-    padding-left: 2.5%;
+    text-align: center;
     font-size: 1.7em;
+    width: 10%;
   }
 
   .WeatherMoodContent {
@@ -501,6 +528,11 @@
 
   .WeatherMoodDate {
     font-size: 0.75em;
+  }
+
+  .WeatherMoodDelete {
+    margin-bottom: 13%;
+    font-size: 0.5em;
   }
 
   .tomorrowWeather {

@@ -11,7 +11,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function WeatherMood(props) {
-  console.log(props);
   let icon;
 
   if (props.mood === "Clear") icon = <FontAwesomeIcon icon={faSun} />;
@@ -22,19 +21,25 @@ function WeatherMood(props) {
   else if (props.mood === "Snow") icon = <FontAwesomeIcon icon={faSnowflake} />;
   else if (props.mood === "Mist") icon = <FontAwesomeIcon icon={faSmog} />;
 
-  return props.content === "" || props.mood === "" ? (
+  const handleClick = () => {
+    props.deletePost(props.id);
+  };
+
+  return props.content === "" || props.mood === "Mood" || props.mood === "" ? (
     <div></div>
   ) : (
     <div className="WeatherMood">
       <div className="WeatherMoodIcon">{icon}</div>
       <div className="WeatherMoodContent">
         <div className="WeatherMoodDate">
-          {props.date.year}-{props.date.month}-{props.date.day} at{" "}
-          {props.date.hour}:{props.date.minute}{" "}
-          {props.date.hour > 12 ? "PM" : "AM"}
+          {props.year}-{props.month}-{props.day} at {props.hour}:{props.minute}{" "}
+          {props.hour > 12 ? "PM" : "AM"}
         </div>
         <div className="WeatherMoodText">{props.content}</div>
       </div>
+      <button className="WeatherMoodDelete" onClick={handleClick}>
+        X
+      </button>
     </div>
   );
 }

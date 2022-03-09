@@ -13,7 +13,7 @@ function Searchbar(props) {
   };
 
   const handleSpan = () => {
-    console.log("Span? : " + span);
+    //console.log("Span? : " + span);
     setSpan(true);
   };
 
@@ -38,7 +38,7 @@ function Searchbar(props) {
       </button>
     </div>
   ) : (
-    <div className="SearchBarClose" onClick={console.log("div pressed")}>
+    <div className="SearchBarClose">
       <button className="SearchBarCloseButton" onClick={handleSpan}>
         <FontAwesomeIcon icon={faLocationDot} className="locationIcon" />
         {props.todayWeather.location}

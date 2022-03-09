@@ -1,10 +1,11 @@
 import "../App.css";
 import WeatherMood from "./WeatherMood";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoltLightning,
   faCloud,
+  faQuestionCircle,
   faSmog,
   faSnowflake,
   faSun,
@@ -17,13 +18,7 @@ function PostBar(props) {
 
   const [mood, setMood] = useState("");
   const [content, setContent] = useState("");
-  const [date, setDate] = useState({
-    year: 0,
-    month: 0,
-    day: 0,
-    hour: 0,
-    minute: 0,
-  });
+  const [id, setID] = useState(0);
   const [moodList, setMoodList] = useState([]);
 
   const options = [
@@ -86,36 +81,73 @@ function PostBar(props) {
     },
   ];
 
-  const selectPlacholder = "Mood";
+  const defaultMood = {
+    value: "Mood",
+    label: (
+      <>
+        <FontAwesomeIcon
+          icon={faQuestionCircle}
+          className="PostBarSelectIcon"
+        />
+        <span className="PostBarSelectSpan">Mood</span>
+      </>
+    ),
+  };
 
   const handleSelect = (event) => {
     setMood(event.value);
   };
 
   const postMood = () => {
+    if (content === "" || mood === "Mood" || mood === "") return;
     today = new Date();
-    setDate({
+    /*setDate({
       year: today.getFullYear(),
       month: today.getMonth() + 1,
       day: today.getDate(),
       hour: today.getHours(),
       minute: today.getMinutes(),
-    });
+    });*/
 
-    setMoodList([...moodList, { content: content, mood: mood, date: date }]);
+    setMoodList([
+      ...moodList,
+      {
+        content: content,
+        mood: mood,
+        id: id,
+        year: today.getFullYear(),
+        month: today.getMonth() + 1,
+        day: today.getDate(),
+        hour: today.getHours(),
+        minute: today.getMinutes(),
+      },
+    ]);
+
     setContent("");
-    setMood(null);
+    setMood("");
+    setID(id + 1);
+  };
+
+  const deletePost = (ID) => {
+    //console.log("delete ID: " + ID);
+    //console.log("mood list content: " + JSON.stringify(moodList[ID].content));
+    const newList = moodList;
+    //console.log("new List: " + JSON.stringify(newListContent));
+    const updateList = newList.filter((item) => item.id !== ID);
+    //console.log("updateList: " + JSON.stringify(updateList[0]));
+
+    setMoodList(updateList);
   };
 
   return (
     <div className="PostBar">
       <div className="PostBarInput">
         <Select
-          placeholder={selectPlacholder}
+          placeholder={defaultMood.label}
           options={options}
           className="PostBarMood"
           isSearchable={false}
-          onChange={(event) => handleSelect(event)}
+          onChange={handleSelect}
         />
         <textarea
           className="PostBarContent"
@@ -131,13 +163,19 @@ function PostBar(props) {
       </div>
       <div className="PostBarSpace"></div>
       <div className="PostBarOutput">
-        {moodList.map((list, index) => {
+        {moodList.map((moodList, index) => {
           return (
             <WeatherMood
-              content={list.content}
-              mood={list.mood}
-              date={date}
+              content={moodList.content}
+              mood={moodList.mood}
+              id={moodList.id}
+              year={moodList.year}
+              month={moodList.month}
+              day={moodList.day}
+              hour={moodList.hour}
+              minute={moodList.minute}
               key={index}
+              deletePost={deletePost}
             />
           );
         })}
