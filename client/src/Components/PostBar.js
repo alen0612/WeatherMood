@@ -1,6 +1,6 @@
 import "../App.css";
 import WeatherMood from "./WeatherMood";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoltLightning,
@@ -101,13 +101,6 @@ function PostBar(props) {
   const postMood = () => {
     if (content === "" || mood === "Mood" || mood === "") return;
     today = new Date();
-    /*setDate({
-      year: today.getFullYear(),
-      month: today.getMonth() + 1,
-      day: today.getDate(),
-      hour: today.getHours(),
-      minute: today.getMinutes(),
-    });*/
 
     setMoodList([
       ...moodList,
