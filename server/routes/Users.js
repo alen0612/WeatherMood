@@ -8,27 +8,42 @@ router.get("/", async (req, res) => {
   res.json(listOfUsers);
 });
 
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   const { username, password } = req.body;
-  bcrypt.hash(password, 10).then((hash) => {
-    Users.create({
-      username: username,
-      password: hash,
-    });
-    res.json("SUCCESS");
+  const checkUser = await Users.findOne({
+    where: { username: username },
   });
+
+  if (checkUser) {
+    res.status(401);
+    res.json({ error: "Username has already been created!" });
+  } else {
+    bcrypt.hash(password, 10).then((hash) => {
+      Users.create({
+        username: username,
+        password: hash,
+      });
+      res.json("SUCCESS");
+    });
+  }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/signin", async (req, res) => {
   const { username, password } = req.body;
   const user = await Users.findOne({ where: { username: username } });
 
   // user not exist
-  if (!user) res.json({ error: "User Doesn't Exist!" });
+  if (!user) {
+    res.status(401);
+    res.json({ error: "User Doesn't Exist!" });
+  }
 
   // compare hash value
   bcrypt.compare(password, user.password).then((match) => {
-    if (!match) res.json({ error: "Wrong Password!" });
+    if (!match) {
+      res.status(402);
+      res.json({ error: "Wrong Username and Password!" });
+    }
 
     res.json("Login Success!");
   });
