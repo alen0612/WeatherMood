@@ -1,6 +1,7 @@
 import "../App.css";
 import WeatherMood from "./WeatherMood";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoltLightning,
@@ -94,6 +95,14 @@ function PostBar(props) {
     ),
   };
 
+  useEffect(() => {
+    axios.get("http://localhost:3001/posts").then((response) => {
+      //console.log(response.data);
+      setMoodList(response.data);
+      //console.log(moodList);
+    });
+  }, []);
+
   const handleSelect = (event) => {
     setMood(event.value);
   };
@@ -101,6 +110,20 @@ function PostBar(props) {
   const postMood = () => {
     if (content === "" || mood === "Mood" || mood === "") return;
     today = new Date();
+
+    axios
+      .post("http://localhost:3001/posts", {
+        content: content,
+        mood: mood,
+        year: today.getFullYear(),
+        month: today.getMonth() + 1,
+        day: today.getDate(),
+        hour: today.getHours(),
+        minute: today.getMinutes(),
+      })
+      .then((response) => {
+        console.log("OK!");
+      });
 
     setMoodList([
       ...moodList,
@@ -122,14 +145,13 @@ function PostBar(props) {
   };
 
   const deletePost = (ID) => {
-    //console.log("delete ID: " + ID);
-    //console.log("mood list content: " + JSON.stringify(moodList[ID].content));
-    const newList = moodList;
-    //console.log("new List: " + JSON.stringify(newListContent));
-    const updateList = newList.filter((item) => item.id !== ID);
-    //console.log("updateList: " + JSON.stringify(updateList[0]));
+    axios.delete(`http://localhost:3001/posts/${ID}`).then(() => {
+      console.log("remove the post");
+      const newList = moodList;
+      const updateList = newList.filter((item) => item.id !== ID);
 
-    setMoodList(updateList);
+      setMoodList(updateList);
+    });
   };
 
   return (

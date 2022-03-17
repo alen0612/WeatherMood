@@ -1,5 +1,4 @@
 import "../App.css";
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoltLightning,
@@ -22,6 +21,7 @@ function WeatherMood(props) {
   else if (props.mood === "Mist") icon = <FontAwesomeIcon icon={faSmog} />;
 
   const handleClick = () => {
+    //console.log(props.id);
     props.deletePost(props.id);
   };
 
@@ -32,8 +32,8 @@ function WeatherMood(props) {
       <div className="WeatherMoodIcon">{icon}</div>
       <div className="WeatherMoodContent">
         <div className="WeatherMoodDate">
+          {props.createAt}
           {props.year}-{props.month}-{props.day} at {props.hour}:{props.minute}{" "}
-          {props.hour > 12 ? "PM" : "AM"}
         </div>
         <div className="WeatherMoodText">{props.content}</div>
       </div>

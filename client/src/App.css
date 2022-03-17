@@ -9,6 +9,34 @@
   color: rgb(29, 192, 204) !important;
 }
 
+.me-auto {
+  width: inherit;
+}
+
+.navbarLinks {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarLeft {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.navbarRight {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+}
+
 .navItem {
   margin-left: 10%;
 }
@@ -274,18 +302,22 @@
   text-align: center;
   font-size: 2.25em;
   width: 10%;
+  color: rgb(102, 102, 102);
 }
 
 .WeatherMoodContent {
   width: 80%;
   height: 100%;
+  padding-bottom: 4%;
+  color: rgb(65, 65, 65);
 }
 
 .WeatherMoodDate {
   width: 70%;
   height: 20%;
   text-align: start;
-  color: rgb(151, 151, 151);
+  font-size: 0.9em;
+  color: rgb(179, 177, 177);
 }
 
 .WeatherMoodText {
@@ -300,12 +332,14 @@
   border: none;
   border-radius: 5px;
   margin-bottom: 6%;
+  color: rgb(151, 151, 151);
 }
 
 .WeatherMoodDelete:hover {
   box-shadow: 0px 0px 10px rgb(192, 192, 185);
   transform: translateY(-2px);
   transition: 0.5s;
+  color: black;
 }
 
 .WeatherMoodDelete:active {

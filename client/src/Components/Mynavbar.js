@@ -33,25 +33,37 @@ function Mynavbar(props) {
       <Container>
         <Navbar.Brand>WeatherMood</Navbar.Brand>
         <Nav className="me-auto">
-          <div
-            className="navItem"
-            style={todayFontWeight}
-            onClick={() => {
-              //console.log("today clicked");
-              setShowToday(true);
-            }}
-          >
-            Today
-          </div>
-          <div
-            className="navItem"
-            style={forecastFontWeight}
-            onClick={() => {
-              //console.log("forecast clicked");
-              setShowToday(false);
-            }}
-          >
-            Forcast
+          <div className="navbarLinks">
+            <div className="navbarLeft">
+              <div
+                className="navItem"
+                style={todayFontWeight}
+                onClick={() => {
+                  //console.log("today clicked");
+                  setShowToday(true);
+                }}
+              >
+                Today
+              </div>
+              <div
+                className="navItem"
+                style={forecastFontWeight}
+                onClick={() => {
+                  //console.log("forecast clicked");
+                  setShowToday(false);
+                }}
+              >
+                Forcast
+              </div>
+            </div>
+            <div className="navbarRight">
+              <div className="navItem" style={forecastFontWeight}>
+                SignIn
+              </div>
+              <div className="navItem" style={forecastFontWeight}>
+                SignUp
+              </div>
+            </div>
           </div>
         </Nav>
       </Container>

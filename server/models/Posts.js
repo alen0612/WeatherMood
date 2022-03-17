@@ -8,6 +8,26 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    year: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    month: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    day: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    hour: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    minute: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   });
   return Posts;
 };
