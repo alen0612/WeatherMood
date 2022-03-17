@@ -2,14 +2,18 @@ import "./App.css";
 import Mynavbar from "./Components/Mynavbar";
 import Today from "./Pages/Today";
 import Forecast from "./Pages/Forecast";
+import SignIn from "./Components/SignIn";
 import React, { useEffect, useState } from "react";
 import { Alert } from "bootstrap";
 import Axios from "axios";
+import SignUp from "./Components/SignUp";
 
 const APIkey = "029ab88b8a27d39ef20a062c38c4b411";
 
 function App() {
   const [showToday, setShowToday] = useState(true);
+  const [openSignIn, setOpenSignIn] = useState(false);
+  const [openSignUp, setOpenSignUp] = useState(false);
 
   const [date, setDate] = useState(0);
   const dayList = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
@@ -253,32 +257,76 @@ function App() {
 
   return showToday === true ? (
     <div className="App">
-      <Mynavbar setShowToday={setShowToday} />
-
-      <Today
-        background={background}
-        logo={logo}
-        todayWeather={todayWeather}
-        getWeather={getWeather}
-        setTodayWeather={setTodayWeather}
-        setLocation={setLocation}
-        setUnit={setUnit}
+      <Mynavbar
+        openSignIn={openSignIn}
+        openSignUp={openSignUp}
+        setShowToday={setShowToday}
+        setOpenSignIn={setOpenSignIn}
+        setOpenSignUp={setOpenSignUp}
       />
+
+      {openSignIn === true ? (
+        <SignIn
+          openSignIn={openSignIn}
+          openSignUp={openSignUp}
+          setOpenSignIn={setOpenSignIn}
+          setOpenSignUp={setOpenSignUp}
+        />
+      ) : openSignUp === true ? (
+        <SignUp
+          openSignIn={openSignIn}
+          openSignUp={openSignUp}
+          setOpenSignIn={setOpenSignIn}
+          setOpenSignUp={setOpenSignUp}
+        />
+      ) : (
+        <Today
+          background={background}
+          logo={logo}
+          todayWeather={todayWeather}
+          getWeather={getWeather}
+          setTodayWeather={setTodayWeather}
+          setLocation={setLocation}
+          setUnit={setUnit}
+        />
+      )}
     </div>
   ) : (
     <div className="App">
-      <Mynavbar setShowToday={setShowToday} />
-
-      <Forecast
-        todayWeather={todayWeather}
-        date={date}
-        dayList={dayList}
-        forecast={forecast}
-        getWeather={getWeather}
-        setTodayWeather={setTodayWeather}
-        setLocation={setLocation}
-        setUnit={setUnit}
+      <Mynavbar
+        openSignIn={openSignIn}
+        openSignUp={openSignUp}
+        setShowToday={setShowToday}
+        setOpenSignIn={setOpenSignIn}
+        setOpenSignUp={setOpenSignUp}
       />
+
+      {openSignIn === true ? (
+        <SignIn
+          openSignIn={openSignIn}
+          openSignUp={openSignUp}
+          setOpenSignIn={setOpenSignIn}
+          setOpenSignUp={setOpenSignUp}
+        />
+      ) : openSignUp === true ? (
+        <SignUp
+          openSignIn={openSignIn}
+          openSignUp={openSignUp}
+          setOpenSignIn={setOpenSignIn}
+          setOpenSignUp={setOpenSignUp}
+        />
+      ) : (
+        <Forecast
+          todayWeather={todayWeather}
+          date={date}
+          dayList={dayList}
+          forecast={forecast}
+          getWeather={getWeather}
+          setTodayWeather={setTodayWeather}
+          setLocation={setLocation}
+          setUnit={setUnit}
+        />
+      )}
     </div>
   );
 }

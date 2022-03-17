@@ -3,7 +3,7 @@ import TodayInfo from "../Components/TodayInfo";
 import Searchbar from "../Components/Searchbar";
 import PostBar from "../Components/PostBar";
 import Loading from "../Components/Loading";
-import React, { useState } from "react";
+import React from "react";
 
 function Today(props) {
   return (
