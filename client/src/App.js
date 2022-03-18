@@ -282,6 +282,7 @@ function App() {
           setOpenSignIn={setOpenSignIn}
           setOpenSignUp={setOpenSignUp}
           setCurrentUser={setCurrentUser}
+          setAuthState={setAuthState}
         />
 
         {openSignIn === true ? (
@@ -326,6 +327,7 @@ function App() {
           setOpenSignIn={setOpenSignIn}
           setOpenSignUp={setOpenSignUp}
           setCurrentUser={setCurrentUser}
+          setAuthState={setAuthState}
         />
 
         {openSignIn === true ? (

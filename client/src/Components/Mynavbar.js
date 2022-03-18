@@ -41,6 +41,12 @@ function Mynavbar(props) {
     props.setOpenSignUp(true);
   };
 
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    props.setAuthState(false);
+    props.setCurrentUser("");
+  };
+
   let todayFontWeight =
     showToday && !props.openSignIn && !props.openSignUp
       ? { fontWeight: "bold" }
@@ -60,70 +66,73 @@ function Mynavbar(props) {
     : { fontWeight: "normal" };
 
   return (
-    <div>
-      <Navbar bg="light" sticky="top" className="weatherNavbar">
-        <Container>
-          <Navbar.Brand>WeatherMood</Navbar.Brand>
-          <Nav className="me-auto">
-            <div className="navbarLinks">
-              <div className="navbarLeft">
-                <div
-                  className="navItem"
-                  style={todayFontWeight}
-                  onClick={() => {
-                    if (!props.openSignIn && !props.openSignUp)
-                      handleTodayClick();
-                  }}
-                >
-                  Today
-                </div>
-                <div
-                  className="navItem"
-                  style={forecastFontWeight}
-                  onClick={() => {
-                    if (!props.openSignIn && !props.openSignUp)
-                      handleForecastClick();
-                  }}
-                >
-                  Forcast
-                </div>
+    <Navbar bg="light" sticky="top" className="weatherNavbar sticky-top">
+      <Container>
+        <Navbar.Brand>WeatherMood</Navbar.Brand>
+        <Nav className="me-auto">
+          <div className="navbarLinks">
+            <div className="navbarLeft">
+              <div
+                className="navItem"
+                style={todayFontWeight}
+                onClick={() => {
+                  if (!props.openSignIn && !props.openSignUp)
+                    handleTodayClick();
+                }}
+              >
+                Today
               </div>
-              <div className="navbarRight">
-                {!props.authState ? (
-                  <div className="SignInAndSignUp">
-                    <div
-                      className="navItem"
-                      style={signInFontWeight}
-                      onClick={() => {
-                        handleSignInClick();
-                      }}
-                    >
-                      Sign In
-                    </div>
-                    <div
-                      className="navItem"
-                      style={signUpFontWeight}
-                      onClick={() => {
-                        handleSignUpClick();
-                      }}
-                    >
-                      Sign Up
-                    </div>
-                  </div>
-                ) : (
-                  <div className="UsernameAndLogout">
-                    <div className="Signedusername">
-                      Hi, {props.currentUser}
-                    </div>
-                    <div className="Logout">Log out</div>
-                  </div>
-                )}
+              <div
+                className="navItem"
+                style={forecastFontWeight}
+                onClick={() => {
+                  if (!props.openSignIn && !props.openSignUp)
+                    handleForecastClick();
+                }}
+              >
+                Forcast
               </div>
             </div>
-          </Nav>
-        </Container>
-      </Navbar>
-    </div>
+            <div className="navbarRight">
+              {!props.authState ? (
+                <div className="SignInAndSignUp">
+                  <div
+                    className="navItem"
+                    style={signInFontWeight}
+                    onClick={() => {
+                      handleSignInClick();
+                    }}
+                  >
+                    Sign In
+                  </div>
+                  <div
+                    className="navItem"
+                    style={signUpFontWeight}
+                    onClick={() => {
+                      handleSignUpClick();
+                    }}
+                  >
+                    Sign Up
+                  </div>
+                </div>
+              ) : (
+                <div className="UsernameAndLogout">
+                  <div className="Signedusername">Hi, {props.currentUser}</div>
+                  <div
+                    className="Logout"
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Log out
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 }
 

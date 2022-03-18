@@ -22,79 +22,6 @@ function PostBar(props) {
   const [id, setID] = useState(0);
   const [moodList, setMoodList] = useState([]);
 
-  const options = [
-    {
-      value: "Clear",
-      label: (
-        <>
-          <FontAwesomeIcon icon={faSun} className="PostBarSelectIcon" />
-          <span className="PostBarSelectSpan">Clear</span>
-        </>
-      ),
-    },
-    {
-      value: "Cloud",
-      label: (
-        <>
-          <FontAwesomeIcon icon={faCloud} className="PostBarSelectIcon" />
-          <span className="PostBarSelectSpan">Cloud</span>
-        </>
-      ),
-    },
-    {
-      value: "Thunder",
-      label: (
-        <>
-          <FontAwesomeIcon
-            icon={faBoltLightning}
-            className="PostBarSelectIcon"
-          />
-          <span className="PostBarSelectSpan">Thunder</span>
-        </>
-      ),
-    },
-    {
-      value: "Rain",
-      label: (
-        <>
-          <FontAwesomeIcon icon={faTint} className="PostBarSelectIcon" />
-          <span className="PostBarSelectSpan">Rain</span>
-        </>
-      ),
-    },
-    {
-      value: "Mist",
-      label: (
-        <>
-          <FontAwesomeIcon icon={faSmog} className="PostBarSelectIcon" />
-          <span className="PostBarSelectSpan">Mist</span>
-        </>
-      ),
-    },
-    {
-      value: "Snow",
-      label: (
-        <>
-          <FontAwesomeIcon icon={faSnowflake} className="PostBarSelectIcon" />
-          <span className="PostBarSelectSpan">Snow</span>
-        </>
-      ),
-    },
-  ];
-
-  const defaultMood = {
-    value: "Mood",
-    label: (
-      <>
-        <FontAwesomeIcon
-          icon={faQuestionCircle}
-          className="PostBarSelectIcon"
-        />
-        <span className="PostBarSelectSpan">Mood</span>
-      </>
-    ),
-  };
-
   useEffect(() => {
     axios.get("http://localhost:3001/posts").then((response) => {
       //console.log(response.data);
@@ -168,13 +95,40 @@ function PostBar(props) {
   return (
     <div className="PostBar">
       <div className="PostBarInput">
-        <Select
+        {/*<Select
           placeholder={defaultMood.label}
           options={options}
           className="PostBarMood"
           isSearchable={false}
           onChange={handleSelect}
-        />
+        />*/}
+        <select
+          className="PostBarMood"
+          defaultValue={"DEFAULT"}
+          onChange={handleSelect}
+        >
+          <option disabled value="DEFAULT" hidden className="moodSelectDefault">
+            Mood?
+          </option>
+          <option value="Clear" className="moodSelector">
+            Clear
+          </option>
+          <option value="Cloud" className="moodSelector">
+            Cloud
+          </option>
+          <option value="Thunder" className="moodSelector">
+            Thunder
+          </option>
+          <option value="Rain" className="moodSelector">
+            Rain
+          </option>
+          <option value="Mist" className="moodSelector">
+            Mist
+          </option>
+          <option value="Snow" className="moodSelector">
+            Snow
+          </option>
+        </select>
         <textarea
           className="PostBarContent"
           placeholder="What's on your mind?"
@@ -193,6 +147,7 @@ function PostBar(props) {
           return (
             <WeatherMood
               username={moodList.username}
+              currentUser={props.currentUser}
               content={moodList.content}
               mood={moodList.mood}
               id={moodList.id}

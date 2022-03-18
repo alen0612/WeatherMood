@@ -20,7 +20,7 @@ function WeatherMood(props) {
   else if (props.mood === "Snow") icon = <FontAwesomeIcon icon={faSnowflake} />;
   else if (props.mood === "Mist") icon = <FontAwesomeIcon icon={faSmog} />;
 
-  const handleClick = () => {
+  const handleDeleteClick = () => {
     //console.log(props.id);
     props.deletePost(props.id);
   };
@@ -38,9 +38,13 @@ function WeatherMood(props) {
         <div className="WeatherMoodText">{props.content}</div>
       </div>
       <div className="WeatherMoodUser">{props.username}</div>
-      <button className="WeatherMoodDelete" onClick={handleClick}>
-        X
-      </button>
+      {props.currentUser === props.username ? (
+        <button className="WeatherMoodDelete" onClick={handleDeleteClick}>
+          X
+        </button>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }
