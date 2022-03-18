@@ -7,6 +7,8 @@ import React, { useEffect, useState } from "react";
 import { Alert } from "bootstrap";
 import Axios from "axios";
 import SignUp from "./Components/SignUp";
+import { AuthContext } from "./helpers/AuthContext";
+import axios from "axios";
 
 const APIkey = "029ab88b8a27d39ef20a062c38c4b411";
 
@@ -14,6 +16,8 @@ function App() {
   const [showToday, setShowToday] = useState(true);
   const [openSignIn, setOpenSignIn] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
+  const [authState, setAuthState] = useState(false);
 
   const [date, setDate] = useState(0);
   const dayList = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
@@ -41,6 +45,17 @@ function App() {
   useEffect(() => {
     getLocation();
     getDate();
+    axios
+      .get("http://localhost:3001/users/auth", {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        if (response.data.error) {
+          setAuthState(false);
+        } else {
+          setAuthState(true);
+        }
+      });
   }, []);
 
   const getDate = () => {
@@ -257,76 +272,91 @@ function App() {
 
   return showToday === true ? (
     <div className="App">
-      <Mynavbar
-        openSignIn={openSignIn}
-        openSignUp={openSignUp}
-        setShowToday={setShowToday}
-        setOpenSignIn={setOpenSignIn}
-        setOpenSignUp={setOpenSignUp}
-      />
+      <AuthContext.Provider value={{ authState, setAuthState }}>
+        <Mynavbar
+          openSignIn={openSignIn}
+          openSignUp={openSignUp}
+          currentUser={currentUser}
+          authState={authState}
+          setShowToday={setShowToday}
+          setOpenSignIn={setOpenSignIn}
+          setOpenSignUp={setOpenSignUp}
+          setCurrentUser={setCurrentUser}
+        />
 
-      {openSignIn === true ? (
-        <SignIn
-          openSignIn={openSignIn}
-          openSignUp={openSignUp}
-          setOpenSignIn={setOpenSignIn}
-          setOpenSignUp={setOpenSignUp}
-        />
-      ) : openSignUp === true ? (
-        <SignUp
-          openSignIn={openSignIn}
-          openSignUp={openSignUp}
-          setOpenSignIn={setOpenSignIn}
-          setOpenSignUp={setOpenSignUp}
-        />
-      ) : (
-        <Today
-          background={background}
-          logo={logo}
-          todayWeather={todayWeather}
-          getWeather={getWeather}
-          setTodayWeather={setTodayWeather}
-          setLocation={setLocation}
-          setUnit={setUnit}
-        />
-      )}
+        {openSignIn === true ? (
+          <SignIn
+            openSignIn={openSignIn}
+            openSignUp={openSignUp}
+            setOpenSignIn={setOpenSignIn}
+            setOpenSignUp={setOpenSignUp}
+            setCurrentUser={setCurrentUser}
+            setAuthState={setAuthState}
+          />
+        ) : openSignUp === true ? (
+          <SignUp
+            openSignIn={openSignIn}
+            openSignUp={openSignUp}
+            setOpenSignIn={setOpenSignIn}
+            setOpenSignUp={setOpenSignUp}
+          />
+        ) : (
+          <Today
+            background={background}
+            logo={logo}
+            todayWeather={todayWeather}
+            currentUser={currentUser}
+            getWeather={getWeather}
+            setTodayWeather={setTodayWeather}
+            setLocation={setLocation}
+            setUnit={setUnit}
+          />
+        )}
+      </AuthContext.Provider>
     </div>
   ) : (
     <div className="App">
-      <Mynavbar
-        openSignIn={openSignIn}
-        openSignUp={openSignUp}
-        setShowToday={setShowToday}
-        setOpenSignIn={setOpenSignIn}
-        setOpenSignUp={setOpenSignUp}
-      />
+      <AuthContext.Provider value={{ authState, setAuthState }}>
+        <Mynavbar
+          openSignIn={openSignIn}
+          openSignUp={openSignUp}
+          currentUser={currentUser}
+          authState={authState}
+          setShowToday={setShowToday}
+          setOpenSignIn={setOpenSignIn}
+          setOpenSignUp={setOpenSignUp}
+          setCurrentUser={setCurrentUser}
+        />
 
-      {openSignIn === true ? (
-        <SignIn
-          openSignIn={openSignIn}
-          openSignUp={openSignUp}
-          setOpenSignIn={setOpenSignIn}
-          setOpenSignUp={setOpenSignUp}
-        />
-      ) : openSignUp === true ? (
-        <SignUp
-          openSignIn={openSignIn}
-          openSignUp={openSignUp}
-          setOpenSignIn={setOpenSignIn}
-          setOpenSignUp={setOpenSignUp}
-        />
-      ) : (
-        <Forecast
-          todayWeather={todayWeather}
-          date={date}
-          dayList={dayList}
-          forecast={forecast}
-          getWeather={getWeather}
-          setTodayWeather={setTodayWeather}
-          setLocation={setLocation}
-          setUnit={setUnit}
-        />
-      )}
+        {openSignIn === true ? (
+          <SignIn
+            openSignIn={openSignIn}
+            openSignUp={openSignUp}
+            setOpenSignIn={setOpenSignIn}
+            setOpenSignUp={setOpenSignUp}
+            setCurrentUser={setCurrentUser}
+            setAuthState={setAuthState}
+          />
+        ) : openSignUp === true ? (
+          <SignUp
+            openSignIn={openSignIn}
+            openSignUp={openSignUp}
+            setOpenSignIn={setOpenSignIn}
+            setOpenSignUp={setOpenSignUp}
+          />
+        ) : (
+          <Forecast
+            todayWeather={todayWeather}
+            date={date}
+            dayList={dayList}
+            forecast={forecast}
+            getWeather={getWeather}
+            setTodayWeather={setTodayWeather}
+            setLocation={setLocation}
+            setUnit={setUnit}
+          />
+        )}
+      </AuthContext.Provider>
     </div>
   );
 }

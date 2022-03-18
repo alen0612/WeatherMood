@@ -3,14 +3,20 @@ import TodayInfo from "../Components/TodayInfo";
 import Searchbar from "../Components/Searchbar";
 import PostBar from "../Components/PostBar";
 import Loading from "../Components/Loading";
-import React from "react";
+import React, { useState } from "react";
 
 function Today(props) {
-  return (
+  const [loadingVisible, setLoadingVisible] = useState(true);
+
+  return loadingVisible ? (
+    <div>
+      <Loading
+        loadingVisible={loadingVisible}
+        setLoadingVisible={setLoadingVisible}
+      />
+    </div>
+  ) : (
     <div className="todayContainer">
-      <div>
-        <Loading />
-      </div>
       <div className="Background" style={props.background}></div>
       <div className="today">
         <Searchbar
@@ -21,7 +27,7 @@ function Today(props) {
           getWeather={props.getWeather}
         />
         <TodayInfo todayWeather={props.todayWeather} logo={props.logo} />
-        <PostBar />
+        <PostBar currentUser={props.currentUser} />
       </div>
       <div></div>
     </div>

@@ -1,9 +1,13 @@
 import React from "react";
+import { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { AuthContext } from "../helpers/AuthContext";
 
 function SignIn(props) {
+  const { setAuthState } = useContext(AuthContext);
+
   const handleLeaveClick = () => {
     props.setOpenSignIn(false);
     props.setOpenSignUp(false);
@@ -23,7 +27,14 @@ function SignIn(props) {
     axios
       .post("http://localhost:3001/users/signin", data)
       .then((response) => {
-        handleLeaveClick();
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          localStorage.setItem("accessToken", response.data[1]);
+          props.setAuthState(true);
+          props.setCurrentUser(response.data[0]);
+          handleLeaveClick();
+        }
       })
       .catch((err) => {
         alert("Wrong Username or Password!");

@@ -31,10 +31,15 @@
 
 .navbarRight {
   width: 30%;
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
-  flex-direction: row;
+}
+
+.SignInAndSignUp {
+  width: auto;
+}
+
+.SignInAndSignUp div {
+  display: inline-block;
 }
 
 .navItem {
@@ -42,6 +47,33 @@
 }
 
 .navItem:hover {
+  font-size: 1.1em;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.UsernameAndLogout {
+  width: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Signedusername {
+  font-size: 0.85em;
+  color: rgb(153, 153, 153);
+  font-weight: bold;
+  font-style: italic;
+  width: auto;
+  display: inline;
+}
+
+.Logout {
+  width: auto;
+  display: inline;
+}
+
+.Logout:hover {
   font-size: 1.1em;
   transition: 0.5s;
   cursor: pointer;
@@ -392,22 +424,23 @@
   width: 100%;
   border: 0.1px rgb(177, 177, 177) solid;
   z-index: 10;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   border-radius: 5px;
   font-size: 1em;
 }
 
 .WeatherMoodIcon {
+  display: inline-block;
   text-align: center;
   font-size: 2.25em;
   width: 10%;
   color: rgb(102, 102, 102);
+  position: relative;
+  top: 20px;
 }
 
 .WeatherMoodContent {
-  width: 80%;
+  display: inline-block;
+  width: 75%;
   height: 100%;
   padding-bottom: 4%;
   color: rgb(65, 65, 65);
@@ -419,6 +452,8 @@
   text-align: start;
   font-size: 0.9em;
   color: rgb(179, 177, 177);
+  position: relative;
+  top: 10px;
 }
 
 .WeatherMoodText {
@@ -426,13 +461,28 @@
   height: 80%;
   text-align: start;
   font-size: 1.25em;
+  position: relative;
+  top: 10px;
+}
+
+.WeatherMoodUser {
+  width: 10%;
+  display: inline-block;
+  color: rgb(179, 177, 177);
+  font-style: italic;
 }
 
 .WeatherMoodDelete {
+  width: auto;
+  height: auto;
+  font-size: 0.5em;
+  text-align: center;
+  display: inline-block;
   background: transparent;
   border: none;
   border-radius: 5px;
-  margin-bottom: 6%;
+  position: relative;
+  top: -15px;
   color: rgb(151, 151, 151);
 }
 
@@ -512,6 +562,9 @@
   width: 3em;
   z-index: 10;
 }
+
+/*```````Loading page``````` */
+
 .Loading {
   width: 100vw;
   height: 100vh;
@@ -521,6 +574,54 @@
   align-items: center;
   font-size: 2em;
 }
+
+.Loading span {
+  animation: jump 2.5s infinite;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.Loading span:nth-child(1) {
+  animation-delay: 0s;
+}
+.Loading span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.Loading span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.Loading span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.Loading span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.Loading span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.Loading span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.Loading span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.Loading span:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.Loading span:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+/*```````Loading page``````` */
 
 /*```````RWD```````*/
 

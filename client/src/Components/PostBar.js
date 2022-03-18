@@ -112,36 +112,47 @@ function PostBar(props) {
     today = new Date();
 
     axios
-      .post("http://localhost:3001/posts", {
-        content: content,
-        mood: mood,
-        year: today.getFullYear(),
-        month: today.getMonth() + 1,
-        day: today.getDate(),
-        hour: today.getHours(),
-        minute: today.getMinutes(),
-      })
+      .post(
+        "http://localhost:3001/posts",
+        {
+          content: content,
+          mood: mood,
+          year: today.getFullYear(),
+          month: today.getMonth() + 1,
+          day: today.getDate(),
+          hour: today.getHours(),
+          minute: today.getMinutes(),
+        },
+        {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        }
+      )
       .then((response) => {
-        console.log("OK!");
+        if (response.data.error) {
+          alert("Loggin to post!");
+        } else {
+          setMoodList([
+            ...moodList,
+            {
+              content: content,
+              mood: mood,
+              id: id,
+              year: today.getFullYear(),
+              month: today.getMonth() + 1,
+              day: today.getDate(),
+              hour: today.getHours(),
+              minute: today.getMinutes(),
+              username: response.data.username,
+            },
+          ]);
+
+          setContent("");
+          setMood("");
+          setID(id + 1);
+        }
       });
-
-    setMoodList([
-      ...moodList,
-      {
-        content: content,
-        mood: mood,
-        id: id,
-        year: today.getFullYear(),
-        month: today.getMonth() + 1,
-        day: today.getDate(),
-        hour: today.getHours(),
-        minute: today.getMinutes(),
-      },
-    ]);
-
-    setContent("");
-    setMood("");
-    setID(id + 1);
   };
 
   const deletePost = (ID) => {
@@ -181,6 +192,7 @@ function PostBar(props) {
         {moodList.map((moodList, index) => {
           return (
             <WeatherMood
+              username={moodList.username}
               content={moodList.content}
               mood={moodList.mood}
               id={moodList.id}

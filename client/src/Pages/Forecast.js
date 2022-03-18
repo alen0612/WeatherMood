@@ -1,9 +1,11 @@
 import "../App.css";
-import React from "react";
+import React, { useState } from "react";
 import Loading from "../Components/Loading";
 import Searchbar from "../Components/Searchbar";
 
 function Forecast(props) {
+  const [loadingVisible, setLoadingVisible] = useState(true);
+
   let future = [props.date + 2, props.date + 3, props.date + 4];
   for (var i = 0; i < 3; i++) if (future[i] > 6) future[i] -= 7;
 
@@ -59,7 +61,14 @@ function Forecast(props) {
   else if (ID === 800) icon3 = "/WeatherMood/clearIcon.png";
   else icon3 = "/WeatherMood/cloudIcon.png";
 
-  return (
+  return loadingVisible ? (
+    <div>
+      <Loading
+        loadingVisible={loadingVisible}
+        setLoadingVisible={setLoadingVisible}
+      />
+    </div>
+  ) : (
     <div className="Forecast">
       <div>
         <Loading />

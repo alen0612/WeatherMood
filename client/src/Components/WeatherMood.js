@@ -37,6 +37,7 @@ function WeatherMood(props) {
         </div>
         <div className="WeatherMoodText">{props.content}</div>
       </div>
+      <div className="WeatherMoodUser">{props.username}</div>
       <button className="WeatherMoodDelete" onClick={handleClick}>
         X
       </button>
