@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+require("dotenv").config();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://alen0612.github.io/" }));
 
 const db = require("./models");
 
@@ -13,12 +14,17 @@ app.use("/posts", postRouter);
 const userRouter = require("./routes/Users");
 app.use("/users", userRouter);
 
-db.sequelize.sync().then(() => {
-  app.listen(3001, () => {
-    console.log("----------------------------------");
-    console.log("|                                |");
-    console.log("|  Server running on port 3001!  |");
-    console.log("|                                |");
-    console.log("----------------------------------");
+db.sequelize
+  .sync()
+  .then(() => {
+    app.listen(process.env.PORT || 3001, () => {
+      console.log("----------------------------------");
+      console.log("|                                |");
+      console.log("|  Server running on port 3001!  |");
+      console.log("|                                |");
+      console.log("----------------------------------");
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });
-});

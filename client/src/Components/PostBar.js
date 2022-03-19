@@ -23,11 +23,13 @@ function PostBar(props) {
   const [moodList, setMoodList] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/posts").then((response) => {
-      //console.log(response.data);
-      setMoodList(response.data);
-      //console.log(moodList);
-    });
+    axios
+      .get("https://weathermoodbackend.herokuapp.com/posts")
+      .then((response) => {
+        //console.log(response.data);
+        setMoodList(response.data);
+        //console.log(moodList);
+      });
   }, []);
 
   const handleSelect = (event) => {
@@ -40,7 +42,7 @@ function PostBar(props) {
 
     axios
       .post(
-        "http://localhost:3001/posts",
+        "https://weathermoodbackend.herokuapp.com/posts",
         {
           content: content,
           mood: mood,
@@ -83,13 +85,15 @@ function PostBar(props) {
   };
 
   const deletePost = (ID) => {
-    axios.delete(`http://localhost:3001/posts/${ID}`).then(() => {
-      console.log("remove the post");
-      const newList = moodList;
-      const updateList = newList.filter((item) => item.id !== ID);
+    axios
+      .delete(`https://weathermoodbackend.herokuapp.com/posts/${ID}`)
+      .then(() => {
+        console.log("remove the post");
+        const newList = moodList;
+        const updateList = newList.filter((item) => item.id !== ID);
 
-      setMoodList(updateList);
-    });
+        setMoodList(updateList);
+      });
   };
 
   return (

@@ -21,7 +21,7 @@ function SignUp(props) {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3001/users/signup", data)
+      .post("https://weathermoodbackend.herokuapp.com/users/signup", data)
       .then(() => {
         handleLeaveClick();
       })

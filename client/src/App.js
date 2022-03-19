@@ -46,7 +46,7 @@ function App() {
     getLocation();
     getDate();
     axios
-      .get("http://localhost:3001/users/auth", {
+      .get("https://weathermoodbackend.herokuapp.com/users/auth", {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
